@@ -13,7 +13,6 @@ function Cart() {
         const url = `${api_baseUrl}/api/${api_path}/cart`;
         try {
             const res = await axios.get(url);
-            console.log("get resp:", res.data);
             if (res.data.success) {
                 let modify = {
                     ...res.data.data,
@@ -22,7 +21,6 @@ function Cart() {
                         isDisabled: false,
                     })),
                 };
-                console.log(modify);
                 setCartData(modify);
                 // setProducts(
                 //     res.data.data.carts.map((item) => ({
@@ -92,7 +90,6 @@ function Cart() {
         const url = `${api_baseUrl}/api/${api_path}/cart/${cId}`;
         try {
             const res = await axios.delete(url);
-            console.log("delete resp:", res.data);
             if (res.data.success) {
                 loadCart();
             }
@@ -114,10 +111,8 @@ function Cart() {
 
         const url = `${api_baseUrl}/api/${api_path}/carts`;
         try {
-            console.log(url);
             // return;
             const res = await axios.delete(url);
-            console.log("delete resp:", res.data);
             if (res.data.success) {
                 loadCart();
             }

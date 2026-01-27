@@ -52,14 +52,12 @@ function Products() {
         (async () => {
             const url = `${api_baseUrl}/api/${api_path}/products`;
             const resp = await axios.get(url);
-            console.log("Products", resp.data);
             setProducts(resp.data.products);
         })();
     }, []);
 
     const clickDetail = async (id, e) => {
         e.preventDefault();
-        console.log("click detail", id);
         navigate(`/product/${id}`);
         // try {
         //     const res = await axios.get(

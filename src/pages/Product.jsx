@@ -10,7 +10,6 @@ function Product() {
     const [isFreezed, setIsFreezed] = useState(false);
     const [count, setCount] = useState(1);
     const { id } = useParams();
-    console.log(id);
 
     if (!id) return;
 
@@ -19,7 +18,6 @@ function Product() {
             const url = `${api_baseUrl}/api/${api_path}/product/${id}`;
             try {
                 const resp = await axios.get(url);
-                console.log("Product", resp.data);
 
                 if (resp.data.success) {
                     setProductInfo(resp.data.product);
@@ -31,7 +29,6 @@ function Product() {
     }, []);
 
     const addCart = async (id) => {
-        console.log("add cart", id);
         setIsFreezed(true);
         const url = `${api_baseUrl}/api/${api_path}/cart/`;
         const req = {
@@ -42,7 +39,6 @@ function Product() {
         };
         try {
             const resp = await axios.post(url, req);
-            console.log("add cart", resp.data);
 
             if (resp.data.success) {
                 // setProductInfo(resp.data.product);
