@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router";
 
 const api_baseUrl = import.meta.env.VITE_BASEURL;
-const api_path = "kevin-react";
+const api_path = import.meta.env.VITE_PATH;
 
 function Products() {
     const navigate = useNavigate();
@@ -17,10 +17,6 @@ function Products() {
                 if (res.data.success) {
                     // console.log("get resp:", res.data);
                     setProducts(res.data.products); // array
-                    setPagination((prevData) => ({
-                        ...prevData,
-                        ...res.data.pagination,
-                    })); // object
                 }
             } catch (error) {
                 console.dir(error);
@@ -61,7 +57,9 @@ function Products() {
         })();
     }, []);
 
-    const clickDetail = async (id) => {
+    const clickDetail = async (id, e) => {
+        e.preventDefault();
+        console.log("click detail", id);
         navigate(`/product/${id}`);
         // try {
         //     const res = await axios.get(
@@ -80,7 +78,7 @@ function Products() {
             <div className="row">
                 {products.map((p) => (
                     <div className="col-md-4" key={p.id}>
-                        <div className="card" style={{ width: "18rem" }}>
+                        <div className="card" style={{ width: "100%" }}>
                             <img
                                 src={p.imageUrl}
                                 className="card-img-top"
@@ -93,14 +91,16 @@ function Products() {
                                 <p className="card-text">
                                     原價:<del>{p.origin_price}</del>
                                 </p>
-                                <p className="card-text fs-4">特價: {p.price}</p>
+                                <p className="card-text fs-4">
+                                    特價: {p.price}
+                                </p>
                                 <p className="card-text fs-4">{p.unit}</p>
                                 <a
-                                    href="#"
+                                    href="#!"
                                     className="btn btn-primary d-block"
-                                    onClick={() => clickDetail(p.id)}
+                                    onClick={(e) => clickDetail(p.id, e)}
                                 >
-                                    detail
+                                    Detail
                                 </a>
                             </div>
                         </div>

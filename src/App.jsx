@@ -29,7 +29,7 @@ function App() {
                             className="h5 text-decoration-none mx-2"
                             to="/cart"
                         >
-                            cart
+                            Cart
                         </Link>
                     </li>
                 </ul>
