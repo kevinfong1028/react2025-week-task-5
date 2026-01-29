@@ -56,6 +56,7 @@ function Product() {
     return (
         <>
             <h1>Product inside</h1>
+            ID ===== {id}
             <div
                 className="col-12 h-100 border border-2 rounded-3"
                 key={productInfo.id}
@@ -87,9 +88,10 @@ function Product() {
                                 type="number"
                                 id="buyNum"
                                 step="1"
-                                defaultValue={count}
+                                value={count}
                                 min="1"
                                 max="10"
+                                disabled
                             />
                             <button
                                 className="btn btn-sm btn-outline-secondary ms-1"
