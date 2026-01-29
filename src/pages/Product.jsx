@@ -88,7 +88,7 @@ function Product() {
                                 type="number"
                                 id="buyNum"
                                 step="1"
-                                value={count}
+                                defaultValue={count}
                                 min="1"
                                 max="10"
                             />

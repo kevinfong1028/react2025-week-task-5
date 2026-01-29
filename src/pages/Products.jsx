@@ -1,6 +1,6 @@
 import axios, { Axios } from "axios";
 import { useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router";
+import { Link, Navigate, useNavigate } from "react-router";
 
 const api_baseUrl = import.meta.env.VITE_BASEURL;
 const api_path = import.meta.env.VITE_PATH;
@@ -93,13 +93,19 @@ function Products() {
                                     特價: {p.price}
                                 </p>
                                 <p className="card-text fs-4">{p.unit}</p>
-                                <a
+                                {/* <a
                                     href="#!"
                                     className="btn btn-primary d-block"
                                     onClick={(e) => clickDetail(p.id, e)}
                                 >
                                     Detail
-                                </a>
+                                </a> */}
+                                <Link
+                                    className="btn btn-primary d-block"
+                                    to={`/product/${p.id}`}
+                                >
+                                    Detail
+                                </Link>
                             </div>
                         </div>
                     </div>
