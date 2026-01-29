@@ -4,33 +4,40 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 function App() {
+    const handleActiveLink = ({isActive}) => {
+        console.log('isActive', isActive)
+        return `h5 text-decoration-none mx-2 ${isActive ? "active" : ""}`;        
+    };
     return (
         <>
             <div className="container">
                 <Header />
                 <ul className="d-flex border list-unstyled p-2 bg-secondaryX text-lightX">
                     <li>
-                        <Link className="h5 text-decoration-none mx-2" to="/">
+                        <NavLink 
+                            className={handleActiveLink}
+                            to="/"
+                        >
                             Home
-                        </Link>
+                        </NavLink>
                     </li>{" "}
                     |
                     <li>
-                        <Link
-                            className="h5 text-decoration-none mx-2"
+                        <NavLink
+                            className={handleActiveLink}
                             to="/products"
                         >
                             Products
-                        </Link>
+                        </NavLink>
                     </li>{" "}
                     |
                     <li>
-                        <Link
-                            className="h5 text-decoration-none mx-2"
+                        <NavLink
+                            className={handleActiveLink}
                             to="/cart"
                         >
                             Cart
-                        </Link>
+                        </NavLink>
                     </li>
                 </ul>
                 <hr />

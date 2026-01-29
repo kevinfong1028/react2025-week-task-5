@@ -1,9 +1,10 @@
 import axios, { Axios } from "axios";
 import { useEffect, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
-const api_baseUrl = import.meta.env.VITE_BASEURL;
-const api_path = import.meta.env.VITE_PATH;
+// const api_baseUrl = import.meta.env.VITE_BASEURL;
+// const api_path = import.meta.env.VITE_PATH;
+const {VITE_BASEURL, VITE_PATH} = import.meta.env;
 
 function Products() {
     const navigate = useNavigate();
@@ -50,7 +51,7 @@ function Products() {
 
     useEffect(() => {
         (async () => {
-            const url = `${api_baseUrl}/api/${api_path}/products`;
+            const url = `${VITE_BASEURL}/api/${VITE_PATH}/products`;
             const resp = await axios.get(url);
             setProducts(resp.data.products);
         })();

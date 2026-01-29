@@ -56,7 +56,6 @@ function Product() {
     return (
         <>
             <h1>Product inside</h1>
-            ID ===== {id}
             <div
                 className="col-12 h-100 border border-2 rounded-3"
                 key={productInfo.id}
